@@ -133,9 +133,15 @@ public class HexMapEditor : MonoBehaviour {
 
 	public void SetRiverMode (int mode) {
 		riverMode = (OptionalToggle)mode;
+		if (riverMode != OptionalToggle.Ignore) {
+			roadMode = OptionalToggle.Ignore;
+		}
 	}
 
 	public void SetRoadMode (int mode) {
 		roadMode = (OptionalToggle)mode;
+		if (roadMode != OptionalToggle.Ignore) {
+			riverMode = OptionalToggle.Ignore;
+		}
 	}
 }

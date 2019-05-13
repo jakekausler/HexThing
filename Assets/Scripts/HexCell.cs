@@ -46,6 +46,12 @@ public class HexCell : MonoBehaviour
 		}
 	}
 
+	public HexDirection RiverBeginOrEndDirection {
+		get {
+			return hasIncomingRiver ? incomingRiver : outgoingRiver;
+		}
+	}
+
     public float StreamBedY {
         get {
             return (elevation + HexMetrics.streamBedElevationOffset) * HexMetrics.elevationStep;
@@ -225,7 +231,7 @@ public class HexCell : MonoBehaviour
 	}
 
 	public void AddRoad (HexDirection direction) {
-		if (!roads[(int)direction] && !HasRoadThroughEdge(direction) && GetElevationDifference(direction) <= 1) {
+		if (!roads[(int)direction] && !HasRiverThroughEdge(direction) && GetElevationDifference(direction) <= 1) {
 			SetRoad((int)direction, true);
 		}
 	}
